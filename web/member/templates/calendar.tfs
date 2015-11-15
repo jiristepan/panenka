@@ -1,0 +1,33 @@
+
+	<div class="calendar">
+ 		<div class="box">
+  			<table class="monthNavigation">
+  			<tr>
+   				<td class="prev"><a href="{link(_this,"prevMonth")}"><< Pøedchozí</a></td>
+   				<td class="name"><h3>{actualMonth}/{actualYear}</h3></td>
+   				<td class="next"><a href="{link(_this,"nextMonth")}">Další >></a></td>
+  			</tr>
+  			</table>
+ 		</div>
+ 		<div class="box">
+  			<table class="calendar">
+			   <tr>
+			    <th>Pondìlí</th><th>Úterý</th><th>Støeda</th><th>Ètvrtek</th><th>Pátek</th><th class="weekend">Sobota</th><th class="weekend">Nedìle</th>
+			   </tr>
+			   {while dayList}
+			   {if _.start_week}<tr>{/if}
+			       <td class="full{_.dayData.fullLevel} {if not(eq(_.month,actualMonth))}otherMonth{/if} {if or(eq(_.dayOfWeek,5),eq(_.dayOfWeek,6))}weekend{/if}">
+				   <span class="day"><a href="{link(_this.parent,"setDay") day=_.day month=_.month year=_.year}">{_.day}.{_.month}.</a></span>
+				   {if not(_.dayData.blocked)}
+				   		<a href="{link(_this.parent,"showReservation") day=_.day month=_.month year=_.year}">[PØIHLÁSIT</a>]
+				   		{if not(_.dayData.memberPriority)}!{/if}
+				   {/if}
+				   
+				   <br/>è:{_.dayData.numMembers}, nè:{_.dayData.numNonMembers} / {_.dayData.capacity}  
+				</td>
+			   {if _.end_week}</tr>{/if}
+			   {/while}
+			</table>
+		</div>
+	</div>
+

@@ -1,0 +1,62 @@
+{if message}<div class="infoBox">{message raw}</div>{/if}
+{if alert }<div class="alertBox">{alert raw}</div>{/if}
+
+<div class="box">
+{if or(reservations,reservationsByMe)}
+<h2>Seznam rezervací obsahujících uživatele {loggedPerson.longName}</h2>
+<table class="list">
+<tr>
+  <th>vytvoøena</th>
+	<th>od</th>
+	<th>do</th>
+	<th>rezervoval</th>
+	<th>èlenové</th>
+	<th>kamarádové</th>
+	<th>akce</th>
+</tr>
+{while reservationsByMe}{/* vypisu ty kde je vytvoril */}
+<tr>
+  <td>{dateReservation}</td>
+  <td>{dateFrom}</td>
+  <td>{dateTo}</td>
+  <td>{reservedBy.longName}</td> 
+  <td>{while members}{longName}<br>{/while}</td>
+  <td>{while nonMembers}{longName}<br>{/while}</td>
+  <td>
+  	{/* if eq(loggedPerson.id,reservedBy.id) */}
+  	<a href="{link(_this,"reservationEdit") reservationId=id}">[upravit rezervaci]</a><br>
+  	<a href="{link(_this,"reservationDelete") reservationId=id}">[smazat rezervaci]</a>
+  	{/* /if */}
+  </td>
+</tr>
+
+{/while}
+{while reservations}{/* vypisu jen ty kde neni zapisovatelem */}
+{if not(eq(loggedPerson.id,reservedBy.id))}
+<tr>
+  <td>{dateReservation}</td>
+  <td>{dateFrom}</td>
+  <td>{dateTo}</td>
+  <td>{reservedBy.longName}</td> 
+  <td>{while members}{longName}<br>{/while}</td>
+  <td>{while nonMembers}{longName}<br>{/while}</td>
+  <td>
+  	{/* if eq(loggedPerson.id,reservedBy.id) */}
+  	<a href="{link(_this,"reservationEdit") reservationId=id}">[upravit rezervaci]</a><br>
+  	<a href="{link(_this,"reservationDelete") reservationId=id}">[smazat rezervaci]</a>
+  	{/* /if */}
+  </td>
+</tr>
+{/if}
+{/while}
+</table>
+{else}
+<div class="infoBox">Nemáte žádné rezervace. Vytvoøíte je klepnutím na záložku <strong><a href="{link(_parent,"displayCalendar")}">Kalendáø</a></strong></div>
+{/if}
+
+</div>
+{if reservationForm.reservationId}
+<div class="box">
+{reservationForm}	
+</div>
+{/if}

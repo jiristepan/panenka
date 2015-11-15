@@ -1,0 +1,56 @@
+	<!-- okno se dnem -->
+	{if day}
+	<div class="box">
+		<h2>Detail: {day.stdFormat} {if not(day.dayData.blocked)}&nbsp;&nbsp <a href="{link(_this.parent,"showReservation") day=day.day month=day.month year=day.year}">PØIHLÁSIT</a>{/if}</h2>
+		<table class="form">
+		<tr valign="top">
+			<th>Pøihlášení</th>
+			<td>
+			   <table>
+			    <tr><th>Èleni a dìti</th><th>kamrádi</th></tr>
+			    <tr><td>
+				{while day.dayData.reservationList}
+				  {if eq(_ord,day.dayData.capacity)}<hr>{/if}
+				  {if eq(_.person.id,loggedPerson.id)}<a href="{link(_this.parent,"showReservation") reservation_id=_.reservationId}">{/if}
+				  <span class="reservation_{_.status}">{_.person.longName} {if _.person.child}(dítì){/if}{if not(_.person.member)}(kamarád od {_.person.granterPerson.longName}){/if}</span> <!-- [pøihlášen {_.reservationDate}] {_.person.child}{_.person.member} --> 
+				  {if eq(_.person.id,loggedPerson.id)}</a>{/if}
+				  <br>
+				{/while}
+				</td>
+				<td></td>
+				</tr>
+				</table>
+			</td>		
+		</tr>
+		
+		<tr>
+			<th>Stav chaty pro tento den</th>
+			<td>
+				{if eq(day.dayData.fullLevel,0)}prázdná{/if}
+				{if eq(day.dayData.fullLevel,1)}pár lidí{/if}
+				{if eq(day.dayData.fullLevel,2)}støednì{/if}
+				{if eq(day.dayData.fullLevel,3)}dost plná{/if}
+				{if eq(day.dayData.fullLevel,4)}zcela plná - nelze rezervovat{/if}
+				
+			</td>			
+		</tr>
+		<tr>
+			<th>Poèet pøihlášených</th>
+			<td>{day.dayData.totalPersonNum} ({day.dayData.numMembers} + {day.dayData.numNonMembers})</td>
+		</tr>
+		<tr>
+			<th>Kapacita chaty</th>
+			<td>
+				{day.dayData.capacity}
+			</td>
+		</tr>
+		<tr>
+			<th>Poznámka</th>
+			<td>
+				{day.dayData.note}
+			</td>			
+		</tr>
+		</table>
+	</div>	
+	{/if}
+

@@ -1,0 +1,25 @@
+
+<h3>Nápovìda</h3>
+{if displayCalendar}
+  Pro pøihlášení na zájezd:
+  <ul class="help">
+  <li>jednoduše zvolte datum <em>kdy se na panenku chystáte pøijet</em></li>
+  <li>Zvolte velkı odkaz pøihlásit (objeví se dole pod kalendáøem)</li>
+  <li>Vyplòte formuláø a potvrïte rezervaci</li>
+  </ul>
+ {/if}
+ {if displayReservations}
+ <ul class="help">
+  <li>V pravé èásti vidíte všechny rezervace, ve kterıch jste zapsán nebo které jste vytvoøil.</li>
+  <li>Kliknutím na <strong>[upravit rezervaci]</strong> otevøete detail rezervace a mùete ji mìnit.</li>
+  <li>Kliknutím na <strong>[smazat rezervaci]</strong> rezervaci zrušíte. V pøípadì nechtìného zrušení rezervace kontaktujte ihned administrátora.</li>
+ </ul>
+ <p>Pøi editaci rezervace nebo zaloení nové rezervace:</p>
+ <ul class="help">
+  <li>Pomocí zaškrtávátek zvolte kteøí èlenové a kamarádové mají jet.</li>
+  <li>Zadejte datum kdy na panenku pøijedete</li>
+  <li>Zadejte budo datum odjezdu nebo poèet strávenıch nocí</li>
+  <li>Rezervaci ulote</li>
+ </ul> 
+ {/if}
+ <a href="{link(_this,"hideHelp")}">[Skrıt nápovìdu]</a>

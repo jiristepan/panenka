@@ -1,0 +1,2 @@
+{if eq(dir,1)}<img src="{_request.contextPath}/images/button-sort-asc.gif">{/if}
+{if eq(dir,2)}<img src="{_request.contextPath}/images/button-sort-desc.gif">{/if}

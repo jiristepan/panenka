@@ -1,0 +1,17 @@
+<div class="nav"><table>
+<tr>
+	{if not(_first)}
+	<td class="button"><a href="{link(_this,"gotoItem") pos=_first}"><!-- img src="{_request.contextPath}/images/button-first.gif" alt="|&lt;&lt;" title="první" / -->|&lt;&lt;</a></td>
+	{/if}
+	{if _previous}
+	<td class="button"><a href="{link(_this,"gotoItem") pos=_previous}"><!--img src="{_request.contextPath}/images/button-previous.gif" alt="&lt;&lt;" title="pøedchozí" / -->&lt;&lt;</a></td>
+	{/if}
+	<td class="small"><strong>{_start}</strong> až <strong>{_end}</strong> z <strong>{_count}</strong></td>
+	{if _next}
+	<td class="button"><a href="{link(_this,"gotoItem") pos=_next}"><!-- img src="{_request.contextPath}/images/button-next.gif" alt="&gt;&gt;" title="následující" / -->&gt;&gt;</a></td>
+	{/if}
+	{if not(_last)}
+	<td class="button"><a href="{link(_this,"gotoItem") pos=_last}"><!-- img src="{_request.contextPath}/images/button-last.gif" alt="&gt;&gt;|" title="poslední"/ -->&gt;&gt;|</a></td>
+	{/if}
+</tr>
+</table></div>

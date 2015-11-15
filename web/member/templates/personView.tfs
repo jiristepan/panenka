@@ -1,0 +1,77 @@
+<div class="box">
+<table class="list">
+<tr>
+ <th colspan="2">{if person.member}ÈLEN ODDÍLU{else}{if person.child}DÍTÌ{else}NEÈLEN{/if}{/if}</th>
+</tr>
+<tr>
+ <th>Jméno</th>
+ <td>{person.name}</td>
+</tr>
+<tr>
+ <th>Pøíjmení</th>
+ <td>{person.surname}</td>
+</tr>
+{if person.apendix}
+<tr>
+ <th></th>
+ <td>{person.apendix}</td>
+</tr>
+{/if}
+<tr>
+ <th>Telefon </th>
+ <td>{person.phone1}</td>
+</tr>
+<tr>
+ <th>Druhý telefon</th>
+ <td>{person.phone2}</td>
+</tr>
+<tr>
+ <th>Email</th>
+ <td>{person.email}</td>
+</tr>
+<tr>
+ <th>Adresa</th>
+ <td>{person.address}</td>
+</tr>
+{if person.member}
+<!-- cast pro cleny -->
+<tr>
+ <th>Práva k aplikaci</th>
+ <td>{if person.manager}[správce]{/if} {if person.admin}[admin]{/if}</td>
+</tr>
+<tr>
+ <th>Mùže zapisovat</th>
+ <td> 
+  {while person.canSubscribeList}
+   {_.longName},
+  {/while}
+ </td>
+</tr>
+<tr>
+ <th>Pøivedl tyto kamarády</th>
+ <td> 
+  {while person.grantNonMemberList}
+   {if eq(_.granted_by,person.id)}{_.longName},{/if}
+  {/while}
+ </td>
+</tr>
+<tr>
+ <th>Mùže být zapsán</th>
+ <td> 
+  {while person.canBeSubscribedList}
+   {_.longName},
+  {/while}
+ </td>
+</tr>
+{else}
+<!-- cast pro necleny -->
+<tr>
+ <th>Do oddilu jej privedl</th>
+ <td> 
+   {person.granterPerson.longName}
+ </td>
+</tr>
+{/if}
+
+</table>
+</div>

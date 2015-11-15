@@ -1,0 +1,3 @@
+Uživatel: <a href="MainPage$usersComposite-editPerson?personId={loggedPerson.id}">{loggedPerson.longName}</a> |
+<a href="{link(_this,"logout")}">[odhlásit]</a>
+

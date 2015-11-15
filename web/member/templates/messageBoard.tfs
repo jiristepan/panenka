@@ -1,0 +1,55 @@
+<div class="box">
+{if displayList}
+<h2>Nástìnka</h2>
+{if or(loggedPerson.admin,loggedPerson.manager)}<a href="{link(_this,"saveMessage") id='-1' title="nová"}">[Pøidat novou zprávu]</a>{/if}
+{while messages}
+	<div class="box">
+	<h3>{title}</h3>
+	{message raw}<br>
+	<span class="grayComment">{name} {surname} - {date} - {catTitle}</span>
+	{if or(loggedPerson.admin,loggedPerson.manager)}
+		<a href="{link(_this,"displayEdit") id=id}">[Editovat]</a>&nbsp;&nbsp;
+		<a href="{link(_this,"deleteMessage") id=id}">[Smazat]</a>	
+	{/if}
+	</div>
+{/while}
+{/if}
+
+{if displayEdit}
+<h2>Nástìnka - editace</h2>
+{if or(loggedPerson.admin,loggedPerson.manager)}
+<form action="{link(_this,"saveMessage")}" method="POST">
+<input type="hidden" name="id" value="{msg.id}">
+<table>
+
+<tr>
+	<th>Titulek:</th>
+	<td><input type="text" name="title" size="40" value="{msg.title}"></td>
+</tr>
+<tr>
+	
+	<th>Text:</th>
+	<td>
+	<textarea name="message" cols="60" rows="60">{msg.message}</textarea>
+	</td>
+</tr>
+<tr>	
+	<th>Kategorie:</th>
+	<td>	
+		{while categoryList}
+			<input type="radio" name="category" value="{id}" {if eq(msg.categoryId,id)}checked="checked"{/if}>{title}<br>
+		{/while}
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2"><input type="submit" value="Uložit"></td>
+</tr>
+</table>
+</form>
+<a href="{link(_this,"displayMessages")}">&lt;&lt; Zpìt na seznam]</a>
+{else}
+<span class="error">Nemáte právo editovat nástìnku</span>
+{/if}
+{/if}
+</div>

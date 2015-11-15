@@ -1,0 +1,19 @@
+<!-- Context panenka -->
+<Context path="/panenka" reloadable="true" docbase="panenka.war">
+	<Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/>
+	<Loader className="org.apache.catalina.loader.DevLoader" reloadable="true" debug="1"/>
+    <Resource auth="Container" name="jdbc/panenka" type="javax.sql.DataSource"/>
+
+    <ResourceParams name="jdbc/panenka">
+        <parameter><name>factory</name><value>org.apache.commons.dbcp.BasicDataSourceFactory</value></parameter>
+
+        <parameter><name>username</name><value>panenka</value></parameter>
+        <parameter><name>password</name><value>panenka</value>
+
+        </parameter><parameter><name>driverClassName</name><value>org.gjt.mm.mysql.Driver</value></parameter>
+        <parameter><name>url</name>
+            <value>jdbc:mysql://127.0.0.1:3306/panenka?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=windows-1250</value>
+        </parameter>
+    </ResourceParams>
+</Context>
+

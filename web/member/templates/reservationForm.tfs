@@ -1,0 +1,67 @@
+{if message}<div class="infoBox">{message raw}</div>{/if}
+{if alert}<div class="alertBox">{alert raw}</div>{/if}
+<div class="box">
+		{if newReservation}
+		<h2>Pøihlášení s pøíjezdem {day.stdFormat} &nbsp;&nbsp;&nbsp;
+		{else}
+		<h2>Detail rezervace è. {reservation.id}
+		{/if}
+		<a href="{link(_parent,"cancelReservation")}">&lt;&lt;ZPÌT</a></h2>
+		
+		<form action="{link(_this,"doReservation")}" method="post">
+		{if newReservation}
+			<input type="hidden" name="action" value="new"/>
+		{else}
+			<input type="hidden" name="action" value="update"/>
+		{/if}
+
+		<table class="list">
+		<tr>
+			<th>Èlenové</th>
+			<td>
+				Pøihlašuji tyto èleny z tìch, které mám právo pøihlašovat:<br/>		
+					<input type="checkbox" name="member" value="{loggedPerson.id}" {if in(loggedPerson.id,reservation.memberIdList)}checked{/if}/>{loggedPerson.longName}<br/>
+					{while loggedPerson.canSubscribeList}
+					 <input type="checkbox" name="member" {if in(_.id,reservation.memberIdList)}checked{/if} value="{_.id}"/>{_.longName} {if _.child}(dítì){/if}<br/>
+					{/while}
+			</td>			
+		</tr>
+		<tr>
+			<th>Neèlenové</th>
+			<td>
+					Již evidovaní kamarádové, které zadal èlen nebo nìkdo z tìch koho mùže zapisovat<br/>
+					{while loggedPerson.grantNonMemberList}
+						<input type="checkbox" name="nonmember" {if in(_.id,reservation.nonMemberIdList)}checked{/if} value="{_.id}"/>{_.longName}<br/>
+					{/while}
+					<br/>
+					<a href="MainPage$usersComposite-editPerson?personId={loggedPerson.id}#newnonmember">Pøidejte si nové èleny do seznamu</a>
+					<!--
+					Noví kamarádové (vypište na každou øádku 'Jméno Pøíjmení'):<br/>
+					<textarea name="new_nonmembers" rows="10" cols="35">
+					</textarea>
+					-->
+			</td>		
+		</tr>
+		<tr>
+			<th>Doba pobytu</th>
+			<td>
+				<table style="border:0px;">
+				<tr>
+				  <td>Pøíjezd:</td><td><input type=text id="dateFromField" name="date_from" size=10 value="{if newReservation}{day.stdFormat}{else}{reservation.dateFrom}{/if}" onChange="changeDate('from');"> </td>
+				  <td rowspan=3>Poznámka<br/><textarea name="note" rows=5 cols=25>{reservation.note}</textarea>
+				</tr>
+				<tr><td>Poèet nocí:</td><td><input type=text id="numDaysField" name="nights" size=3 value="{reservation.numDays}" onChange="changeDate('num');"> </td></tr>
+				<tr><td>Odjezd:</td><td><input type=text id="dateToField" name="date_to" size=10 value="{reservation.dateTo}" onChange="changeDate('to');"></td></tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="submit" name="submitReservation" value="{if newReservation} ---- Potvrdit rezervaci --- {else} -----Zmìnit rezervaci----- {/if}">
+			</td>			
+		</tr>
+		</table>
+		</form>
+	</div>	
+

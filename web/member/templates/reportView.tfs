@@ -1,0 +1,37 @@
+<div class="box">
+<h3>Seznam rezervací</h3>
+<form action='{link(_this,"setInterval")}'>
+Od: <input type="text" name="dateFrom" value="{dateFrom}"/ size="10">
+Do: <input type="text" name="dateTo" value="{dateTo}" size="10"/>
+<input type="submit" name="sendData" value="Zobrazit"/>
+(Datumy zadávejte ve formátu den.mesic.rok)
+</form>
+</div>
+{if alert}<div class="alertBox">{alert raw}</div>{/if}
+{if allDays}
+<div class="box">
+<table  class="list">
+<tr>
+ <th></th>
+ {while allDays}<th>{_.shortDate}</th>{/while}
+</tr>
+{while allPersons}
+ <tr>
+   <th>
+      {_.person.longName} <br>
+      {if not(_.person.member)}(kamarád od {_.person.granterPerson.longName}){/if}
+   </th>
+   {while _.days}
+     <td>
+       <span class="reservation_{_}">
+          {if eq(_,1)}jede{/if}
+          {if eq(_,3)}jede{/if}
+          {if eq(_,2)}nahr.{/if}
+       </span>
+     </td>
+   {/while}
+ </tr>
+{/while}
+</table>
+</div>
+{/if}

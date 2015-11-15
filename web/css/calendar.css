@@ -1,0 +1,75 @@
+/* ----------- calendar ---------- */
+table.monthNavigation {
+	width: 100%;
+	margin-bottom: 5px;
+	
+}
+
+table.monthNavigation td {
+	border: 0px;
+}
+
+table.monthNavigation td.prev {
+	width: 15%;
+}
+
+table.monthNavigation td.name {
+	text-align: center;
+}
+
+table.monthNavigation td.next {
+	width: 15%;
+	text-align: right;
+  padding-right: 15px;	
+}
+
+
+/* ------- calendar table ----- */
+table.calendar {
+	width: 100%;
+}
+
+table.calendar th {
+	background-color: #eee;
+}
+
+table.calendar td.full0 {
+	background-color: #dfd;  
+}
+
+table.calendar td.full1 {
+	background-color: #afa;  
+}
+
+table.calendar td.full2 {
+	background-color: #aaf;  
+}
+
+table.calendar td.full3 {
+	background-color: #daa;  
+}
+
+table.calendar td.full4 {
+	background-color: #d00;  
+}
+
+table.calendar th.weekend {
+	border-width: 3px;
+}
+
+table.calendar td.weekend {
+	border-width: 3px;
+}
+
+table.calendar td.otherMonth {
+	color: #555;
+}
+
+table.calendar td.today {
+    border-color: black;
+	font-weight: bold;
+}
+
+
+
+

@@ -1,0 +1,19 @@
+{if displayList}
+<div class="box">
+   <h2>Seznam èlenù</h2>
+   {memberListDataGrid}
+   <h2>Seznam kamarádù</h2>
+   {nonMemberListDataGrid}
+</div>
+{else}
+  <div class="box" align="center">
+    <a href="{link(_this,"showList")}">&lt;&lt;&lt;&nbsp;Zpìt na seznam</a>
+  </div>
+	{if displayDetail}
+	  {personView}
+	{/if}
+	{if displayForm}
+	  {personForm}
+	{/if}
+
+{/if}

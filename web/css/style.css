@@ -1,0 +1,267 @@
+body {
+	font-family: Arial;
+	font-size: 0.8em;
+	background-color: #33f;
+	background-image: url("/panenka/img/background.gif");
+	color: #000;
+	line-height: 1.5em;	
+	padding:0px;
+}
+
+h1 {
+  color: #800;	
+  text-align: center;
+  margin-top: 3px;
+}
+
+h2 {
+  color: #800;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+h3 {
+  color: #400;
+  margin-top: 3px;
+  margin-bottom: 0px;
+ 
+}
+em {
+  color: #800;
+}
+
+p {
+  margin-top: 0px;
+}
+
+ul {
+  padding-left: 15px;
+}
+
+ul.help {
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+table {	
+	border-collapse: collapse;
+	font-size: 1em;	
+}
+
+table.invisible {
+	border: 0px;
+	vertical-align: top;
+}
+
+table.invisible td{
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	vertical-align: top;
+}
+
+
+table.calendar, table.list, table.form, table.data {
+	width: 80%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: ActiveBorder;
+}
+
+table.calendar td, table.calendar th, table.list td, table.list th  {
+	border: 1px solid ActiveBorder;
+	padding: 5px 5px;
+
+}
+
+table.form th {
+	text-align: right;
+	width: 20%;
+}
+
+table.list td, table.form td, table.data td {
+	border-width: 1px;
+	border-style: solid;
+	border-color: ThreeDLightShadow ThreeDShadow ThreeDShadow ThreeDLightShadow;
+	padding: 5px 5px;
+}
+table.list th, table.form th, table.data th {
+	border-width: 1px;
+	border-style: solid;
+	border-color: ThreeDLightShadow ThreeDShadow ThreeDShadow ThreeDLightShadow;
+	background-color: ThreeDFace;
+	vertical-align: top;
+}
+
+
+table.list .buttons {
+	width: 16px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.buttons {
+	text-align: center;
+}
+
+div.buttons {
+	margin: 0.5em 0;
+}
+
+form {
+	text-align: center;
+}
+
+td.buttons button {
+	border: none;
+	background: none;
+	cursor: pointer;
+	cursor: hand;
+}
+
+input.input, textarea {
+	border-width: 1px;
+	border-style: inset;
+	border-color: ThreeDShadow;
+	background-color: ThreeDHighlight;
+}
+
+input.readonly, textarea.readonly {
+	color: GrayText;
+	background-color: ThreeDLightShadow;
+}
+
+input.button {
+	border-width: 1px;
+	border-style: outset;
+	border-color: ButtonShadow;
+	background-color: ButtonFace;
+}
+
+textarea {
+	height: 10em;
+}
+textarea.editable {
+	height: 30em;
+}
+textarea.resizable {
+}
+
+h1 {
+  color: #ddf;
+}
+
+.infoBox {
+	margin: 5px 0px;
+	background-color: ;
+	border: 1px dotted black;
+	background-color: #FEFF86;
+}
+
+.menuBox {
+	margin: 5px 0px;
+	background-color: #ddf;
+	border:  1px dotted white;
+	/*background-image: url("img/bg_flake.gif");
+	background-position: right;
+	background-repeat: repeat-y;*/	 	  
+}
+
+.menuBox {
+	padding:0px;
+}
+.menuBox a {
+	font-size: 1.1em;
+	font-weight: bold;
+	text-decoration: none;
+}	
+
+.menuBox a.tool {
+	font-size: 1em;
+	font-weight: normal;
+}	
+
+
+.menuBox ul{
+	margin:0px;
+}
+
+.menuBox li{
+	float: left;
+	list-style-type: none;
+	padding: 0px 10px;
+	border-right: 1px solid #000000;
+}
+
+.menuBox li.right {
+	float: right;
+	list-style-type: none;
+	padding: 0px 10px;
+	border-left: 1px solid #000000;
+}
+
+
+.menuBox li.active {
+	background-color: #aac;
+}
+
+.reset {
+	clear: both;
+}
+	
+
+
+
+
+
+
+.box {
+	margin: 5px 0px;
+   background-color: #ddf;
+	border:  1px dotted white;  
+	padding: 5px 10px;
+}
+
+.alertBox{
+	margin: 5px 0px;
+	background-color: #faa;
+	border: 3px solid #a55;
+}
+
+.helpBox {
+	margin: 5px 0px;
+   background-color: #ddf;
+	border:  1px dotted white;  
+	font-size:0.8em;
+	line-height: 1.2em;
+	max-width: 200px;
+}
+
+
+.helpBox h3{
+	
+}
+	margin-bottom: 0.5em;
+}
+
+.box, .alertBox, infoBox, helpBox {
+	padding: 5px 10px;
+}
+
+.grayComment {
+	color: #666;
+	font-size: 0.8em;
+}
+
+.reservation_1{ /*ok*/
+	color: blue;
+}
+
+.reservation_2{ /*full*/
+	color: #555;
+}
+
+.reservation_3{ /*full*/
+	color: red;
+}
+

@@ -1,0 +1,48 @@
+{part gridStart}
+<table class="list">
+{if not(_empty)}
+<tr>
+<th class="right">#</th>
+<th><a href="{link(_this,"toggleOrdering") colId="name"}">Jméno</a> {include "library/sortOrder.tfs" dir=_sortType.name}</th>
+<th><a href="{link(_this,"toggleOrdering") colId="surname"}">Pøíjmení</a> {include "library/sortOrder.tfs" dir=_sortType.surname}</th>
+<th>Telefon</th>
+<th>email</th>
+<th><a href="{link(_this,"toggleOrdering") colId="member"}">Typ</a> {include "library/sortOrder.tfs" dir=_sortType.member}</th>
+<th>&nbsp;</th>
+</tr>
+{/if}
+{/part}
+{part gridItem}
+<tr>
+<td class="right">{_ord}.</td>
+<td>{name}</td>
+<td><a href="{link(_parent,"showDetail") personId=id}">{surname} {apendix}</a></td>
+<td>{phone1}{if phone2},{phone2}{/if}</td>
+<td>{email}</td>
+<td>
+  {if eq(member,1)}èlen{else}kamarád{/if}{if eq(child,1)}(dítì){/if}
+  {if eq(admin,1)} [admin]{/if}
+  {if eq(manager,1)} [správce]{/if}
+</td>
+<td>
+{if member}
+	{if or(_parent.loggedPerson.admin,_parent.loggedPerson.manager,eq(_parent.loggedPerson.id,id))}<a href="{link(_parent,"editPerson") personId=id}">[editovat]</a>{/if}
+{else}
+    od {g_surname}
+{/if}
+</td>
+
+</tr>
+
+{/part}
+
+{part gridEnd}
+</table>
+
+{if not(_empty)}
+	{include "library/navigation.tfs"}
+{else}
+	<div>Nejsou žádné položky k výpisu</div>
+{/if}
+{/part}
+

@@ -1,0 +1,149 @@
+<div class="box">
+{if authorized}
+<h3>Editace {if person.member}èlena oddílu{else}kamaráda{/if}</h3>
+<form action="{link(_this,"updatePerson")}" method="POST">
+<input type="hidden" name="action" value="update" />
+<table class="form">
+{if person.member}
+<tr>
+  <th>Login</th>
+  <td>{person.login}</td>
+</tr>
+{if or(loggedPerson.admin,eq(loggedPerson.id,person.id))}
+<tr>
+  <th>Password</th>
+  <td><input type="text" name="password" value="{person.password}"></td>
+</tr>
+{/if}
+<tr>
+  <th>Jméno</th>
+  <td><input type="text" name="name" value="{person.name}"></td>
+</tr>
+
+<tr>
+  <th>Pøíjmení</th>
+  <td><input type="text" name="surname" value="{person.surname}"></td>
+</tr>
+<tr>
+  <th>Za jménem</th>
+  <td><input type="text" name="apendix" value="{person.apendix}"></td>
+</tr>
+<tr>
+  <th>Email</th>
+  <td><input type="text" name="email" value="{person.email}"></td>
+</tr>
+<tr>
+  <th>Telefon</th>
+  <td><input type="text" name="phone1" value="{person.phone1}"></td>
+</tr>
+<tr>
+  <th>Druhý telefon</th>
+  <td><input type="text" name="phone2" value="{person.phone2}"></td>
+</tr>
+<tr>
+  <th>Adresa</th>
+  <td><textarea name="address">{person.address}</textarea></td>
+</tr>	
+{if loggedPerson.admin}
+<tr>
+  <th>Je èlenem</th>
+  <td><input type="checkbox" name="member" {if person.member}checked{/if}></td>
+</tr>
+<tr>
+  <th>Je správcem</th>
+  <td><input type="checkbox" name="manager" {if person.manager}checked{/if}></td>
+</tr>
+<tr>
+  <th>Je administrátorem</th>
+  <td><input type="checkbox" name="admin" {if person.admin}checked{/if}></td>
+</tr>
+{/if}
+{if or(person.member,person.child)}
+<input type="hidden" name="member" value="1"/>
+<tr>
+ <th>Mùže být zapsán tìmito èleny</th>
+ <td>
+  <table><tr><td>
+   <select size="20" multiple name="canBeSubscribed">
+   {while allMembers}
+     {if not(eq(_.id,loggedPerson.id))}
+     <option value="{_.id}" {if in(_.id,person.canBeSubscribedIdsList)}selected{/if}>{_.name} {_.surname}</option>
+     {/if}
+   {/while}
+   </select>
+  </td><td valign="top">
+    Výbìr více osob provedete tak, že podržíte klávesu CTRL a myší vybíráte položky.
+  </td>
+  </tr>
+  </table>
+ </td>
+</tr>
+
+{else}
+<tr>
+ <th>
+  Tento neèlìn jezdí s
+ </th>
+ <td>
+  {person.granterPerson.longName}
+ </td>
+</tr> 
+{/if}
+ <tr>
+ <th></th>
+ <td>
+    <input type="submit" name="update" value="Uložit data">
+ </td>
+ </tr>
+ </table>
+</form>
+
+{if eq(loggedPerson.id,person.id)}
+<div class="box">
+<a name="newnonmember">
+<h3>Neèlenové pøihlašovaní tímto èlenem</h3>
+<p>Již evidovaní</p>	
+	<ul>
+  	{while person.grantNonMemberList}
+   		<li>{_.longName}</li>
+  	{/while}
+  	</ul>
+
+<form action="{link(_this,"addNonMember")}" method="POST">
+  	<table>
+  	<tr>
+	  	<th>Jméno:</th>
+	  	<td>
+	  		<input type="text" name="new_non_member_name" value="">
+	  	</td>
+	</tr>
+	<tr>
+	  	<th>Pøíjmení</th>
+	    <td>
+	    	<input type="text" name="new_non_member_surname" value="">
+		</td>
+	</tr>
+	<tr>
+		<th>Je dítì?</th>
+		<td>
+			<input type="checkbox" name="new_non_member_ischild" value="on"> (pokud pøihlašujete dìti, mají vyšší prioritu)
+		</td>	
+	</tr>
+	<tr>
+		<th></th>
+		<td>
+			<input type="submit" name="" value="Pøidat nového kamaráda">
+		</td>
+	</tr>
+	</table>
+</form>
+</div>
+{/if}
+{else}
+<h3>Nepovolená operace</h3>
+{/if}
+{else}
+<h3>Nautorizovaná operace</h3>
+{/if}
+</div>
+

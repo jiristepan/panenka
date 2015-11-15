@@ -1,0 +1,15 @@
+<ul>
+<!-- displayMode:{displayMode} -->
+<li {if displayReservations}class="active"{/if}><a href="{link(_this,"displayReservations")}">Rezervace</a></li>
+<li {if displayCalendar}class="active"{/if}><a href="{link(_this,"displayCalendar")}">Kalendáø</a></li>
+<li {if displayUsers}class="active"{/if}><a href="{link(_this,"displayUsers")}">Seznam èlenù</a></li>
+<li {if displayReport}class="active"{/if}><a href="{link(_this,"displayReport")}">Reporty</a></li>
+<li {if displayBoard}class="active"{/if}><a href="{link(_this,"displayBoard")}">Nástìnka</a></li>
+{if or(loggedPerson.manager, loggedPerson.admin)}
+	<li {if displayDayConstrainEditor}class="active"{/if}><a href="{link(_this,"displayDayConstrainEditor")}">Editor zájezdù</a></li>
+{/if}
+{if not(showHelp)}
+  <li class="right"><a class="tool" href="{link(_this,"showHelp")}">Nápovìda</a></li>
+{/if}
+</ul>
+<div class="reset"></div>

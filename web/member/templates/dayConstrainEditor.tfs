@@ -1,0 +1,67 @@
+
+<div class="box">
+<h2>Editor kapacit a zájezdù</h2>
+<a href="{link(_this,"addnew")}">[Pøidat nový zájezd]</a><br>&nbsp;<br>
+{if message}
+<div class="infoBox">{message raw}</div>
+{/if}
+{}
+{while dayConstraintList}
+<table class="list">
+<form action="{link (_this,'update')}" method="POST">
+<input type="hidden" name="id" value="{_.id}">
+<tr>
+   <th>Od</th>
+   <td><input type="input" name="from_date" value="{fromDate}"></td>
+ </tr>  
+ <tr>
+   <th>Do</th>
+   <td><input type="input" name="to_date" value="{toDate}"></td>
+ </tr>  
+ <tr>
+   <th>Vedoucí zájezdu</th>
+   <td>                             
+     <select name="manager_id">
+      {while manager_list}
+        <option value="{_.id}" {if eq(_.id, managerId)}selected="selected"{/if}>{_.longName}</option>
+      {/while}
+     </select>
+   </td>
+ </tr>  
+ <tr>
+   <th>Kapacita chaty</th>
+   <td><input type="input" name="capacity" value="{capacity}"></td>
+ </tr>  
+ <tr>
+   <th>Kapacita pro kamarády</th>
+   <td><input type="input" name="nonmember_capacity" value="{nonmemberCapacity}">
+   &nbsp; </td>
+ </tr> 
+ <tr>
+   <th>Datum priority èlenù</th>
+   <td><input type="input" name="member_priority_deadline" value="{memberPriorityDeadline}">
+   &nbsp; pokud není vypnìno tak se poèítá s termínem do pøedcházející støedy. 
+   </td>
+ </tr> 
+ <tr>
+   <th>Poznámka</th>
+   <td><textarea name="note">{_.note}</textarea></td>
+ </tr>  
+ <tr>
+   <td colspan="2"><input type="submit" value="Ulož zmìnu"></td>
+ </tr>
+ </form>
+ <form action="{link (_this,'delete	')}" method="POST">
+ <tr>
+  <td colspan="2">
+	
+	  <input type="hidden" name="id" value="{_.id}">
+	  <input type="checkbox" name="delete">
+	  <input type="submit" value="Smazat rezervaci">	
+  </td>
+ </tr>
+ </form>
+ </table>
+ <br>
+{/while}
+</div>

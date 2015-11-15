@@ -1,0 +1,7 @@
+{calendarView}
+{if showDayDetail}
+	{dayView}
+{/if}
+{if showReservation}
+	{reservationForm}
+{/if}
